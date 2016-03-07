@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  if(user.connects.twitter.id)
+    span #{user.connects.twitter.name}
+  else
+    a(href='/connect/twitter') not yet connect to twitter

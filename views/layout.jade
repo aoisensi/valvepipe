@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/components/material-design-lite/material.min.css')
+    script(src='/components/material-design-lite/material.min.js')
+    link(rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons')
+  body
+    .mdl-layout.mdl-layout--fixed-header
+      include header
+      .mdl-grid
+        .mdl-cell.mdl-cell--8-col
+          block content
+        .mdl-cell.mdl-cell--4-col
+          include tweets.html
+      

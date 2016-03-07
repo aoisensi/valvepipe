@@ -1,0 +1,7 @@
+{
+  "name": "valvepipe",
+  "private": true,
+  "dependencies": {
+    "material-design-lite": "~1.1.2"
+  }
+}
