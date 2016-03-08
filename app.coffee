@@ -4,7 +4,6 @@ $ = do express
 
 db = require './db'
 
-routes = require './routes'
 passport = require './passport'
 
 $.set 'view engine', 'jade'
@@ -16,6 +15,7 @@ $.use session secret: process.env.SESSION_SECRET || 'crystalmaiden'
     
 $.use do passport.initialize
 $.use do passport.session
-$.use routes
+
+$.use '/', require './controllers'
 
 $.listen process.env.PORT, process.env.IP

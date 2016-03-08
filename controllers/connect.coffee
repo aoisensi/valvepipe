@@ -1,15 +1,18 @@
-models = require '../models'
+express = require 'express'
+$ = do express.Router
+passport = require '../passport'
 
-User = models.User
+utils = require './utils'
 
-exports.twitterCallback = (req, res) ->
-  if(!req.session.twitter)
-    res.status(500)
-    return
-  User.update {id: req.user.id}, req.user, {upsert: true}, (err) ->
-    if(!err)
-      res.redirect '/pipe'
-      return
-    console.log err
-    
-    
+$.get '/twitter',
+  utils.needLogin,
+  passport.authenticate 'twitter',
+    session: false
+  
+$.get '/twitter/callback',
+  passport.authenticate 'twitter',
+    session: false
+    failureRedirect: '/connect/failed'
+    successRedirect: '/pipe'
+  
+module.exports = $

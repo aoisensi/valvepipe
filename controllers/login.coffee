@@ -1,9 +1,12 @@
-models = require '../models'
+express = require 'express'
+$ = do express.Router
+passport = require '../passport'
 
-User = models.User
+$.get '/', passport.authenticate 'steam'
 
-exports.callback = (req, res) ->
-  res.redirect '/welcome'
-
+$.get '/callback',
+  passport.authenticate 'steam',
+    failureRedirect: '/login/failed',
+    successRedirect: '/welcome'
   
-    
+module.exports = $

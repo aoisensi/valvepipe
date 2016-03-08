@@ -5,6 +5,7 @@ compose = require 'composable-middleware'
 
 passport = require './passport'
 
+
 controllers = require './controllers'
 
 needLogin = (req, res, next) ->
@@ -37,6 +38,7 @@ $.get '/connect/twitter',
   
 $.get '/connect/twitter/callback',
   passport.authenticate('twitter', {session: false, failureRedirect: '/connect/failed', successRedirect: '/pipe'})
+  
 $.get '/welcome', (req, res) ->
   res.render 'welcome', { user: req.user }
   
