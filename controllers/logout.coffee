@@ -5,4 +5,4 @@ $.get '/', (req, res) ->
   do req.logout
   res.redirect '/'
   
-exports.module = $
+module.exports = $

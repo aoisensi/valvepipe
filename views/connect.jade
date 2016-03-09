@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  .mdl-card__title アカウント連携
+  ul.mdl-list
+    for val in ['twitter']
+      - var service = user.connects[val]
+      li.mdl-list__item
+        if service !== null
+          i.material-icons.mdl-list__item-avatar #{service.avatar}
+          span #{service.name}
+          a(href='/connect/twitter/unlink') 連携解除
+        else
+          i.material-icons.mdl-list__item-avatar service.avatar
+          a(href='/connect/twitter') Twitterと連携する
+      div #{typeof(service)}
+      div #{service}

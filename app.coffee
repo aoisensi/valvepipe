@@ -11,7 +11,11 @@ $.set 'views', __dirname + '/views'
 
 $.use express.static 'public'
 
-$.use session secret: process.env.SESSION_SECRET || 'crystalmaiden'
+$.use session
+  secret: process.env.SESSION_SECRET || 'crystalmaiden'
+  saveUninitialized :false
+  resave: false
+  
     
 $.use do passport.initialize
 $.use do passport.session

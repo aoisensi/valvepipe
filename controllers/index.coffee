@@ -6,9 +6,7 @@ $.get '/', (req, res) ->
   
 $.use '/login', require './login'
 $.use '/connect', require './connect'
-
-$.get '/pipe', (req, res) ->
-  res.render 'pipe', { user: req.user }
+$.use '/logout', require './logout'
 
 $.get '/welcome', (req, res) ->
   res.render 'welcome', { user: req.user }
